@@ -1,0 +1,4 @@
+[template]
+src = "simplesamlphp/metadata/attributeauthority-hosted.php"
+dest = "/var/simplesamlphp/metadata/attributeauthority-hosted.php"
+

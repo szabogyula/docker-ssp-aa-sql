@@ -1,0 +1,4 @@
+[template]
+src = "simplesamlphp/config/authsources.php"
+dest = "/var/simplesamlphp/config/authsources.php"
+

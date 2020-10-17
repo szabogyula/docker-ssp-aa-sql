@@ -1,0 +1,1 @@
+{{ getenv "SSP_CERT" }}

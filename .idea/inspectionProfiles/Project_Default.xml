@@ -1,0 +1,8 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PhpVariableNamingConventionInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="m_regex" value="[a-z]*[A-Z][a-z]*" />
+    </inspection_tool>
+  </profile>
+</component>

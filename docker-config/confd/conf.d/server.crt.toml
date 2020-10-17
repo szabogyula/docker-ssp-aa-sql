@@ -1,0 +1,4 @@
+[template]
+src = "simplesamlphp/cert/server.crt"
+dest = "/var/simplesamlphp/cert/server.crt"
+
