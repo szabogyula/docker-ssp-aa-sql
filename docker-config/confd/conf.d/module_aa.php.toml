@@ -1,0 +1,4 @@
+[template]
+src = "simplesamlphp/config/module_aa.php"
+dest = "/var/simplesamlphp/config/module_aa.php"
+

@@ -40,7 +40,7 @@ $config = [
     'database.slaves' => [],
 
 
-    'enable.saml20-idp' => true,
+    'enable.saml20-idp' => false,
     'enable.shib13-idp' => false,
     'enable.adfs-idp' => false,
     'enable.wsfed-sp' => false,
