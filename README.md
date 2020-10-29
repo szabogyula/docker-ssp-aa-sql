@@ -17,16 +17,15 @@ Environment variables:
     DYNAMIC_METADATA_PROVIDER: "https://mdx.eduid.hu"
     DYNAMIC_METADATA_PROVIDER_FINGERPRINT: "ValIdaTeFingerPrInt" # optional
 
-    ATTRIBUTE_FROM_SQL_ATTRIBUTE: "eppn"
-    ATTRIBUTE_FROM_SQL_LIMIT: '"linked_attributes"'
-    ATTRIBUTE_FROM_SQL_REPLACE: false
-    ATTRIBUTE_FROM_SQL_DATABASE_DSN: "mysql:host=localhost;dbname=dbname;port=3306"
-    ATTRIBUTE_FROM_SQL_DATABASE_USERNAME: "username"
-    ATTRIBUTE_FROM_SQL_DATABASE_PASSWORD: "password"
-    ATTRIBUTE_FROM_SQL_DATABASE_TABLE: "table"
-
+    ATTRIBUTECOLLECTOR_DSN: "mysql:host=localhost;dbname=dbname;port=3306"
+    ATTRIBUTECOLLECTOR_USERNAME: "username"
+    ATTRIBUTECOLLECTOR_PASSWORD: "password"
+    ATTRIBUTECOLLECTOR_TABLE: "table"
+    ATTRIBUTECOLLECTOR_TABLE_UID_COLUMN_NAME: "where_the_uid_values_are_stored"
+    
     # cert
     SSP_CERT: ""
     SSP_PRIVATE_KEY: ""
 ```
 
+Cert MUST self signed, and ROOT (CA) certificate.

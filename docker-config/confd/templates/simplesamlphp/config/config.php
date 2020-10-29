@@ -99,17 +99,24 @@ $config = [
 
     'authproc.idp' => [],
     'authproc.sp' => [],
+
     'authproc.aa' => [
+        49 => [
+            'class' => 'core:AttributeAdd',
+            'aaDebugAttribute' => 'debug',
+        ],
+
         50 => [
-            'class'     => 'sqlattribs:AttributeFromSQL',
-            'attribute' => '{{ getenv "ATTRIBUTE_FROM_SQL_ATTRIBUTE" "eppn"}}',
-            'limit'     => ['{{ getenv "ATTRIBUTE_FROM_SQL_LIMIT"}}'],
-            'replace'   => {{ getenv "ATTRIBUTE_FROM_SQL_REPLACE" "false"}},
-            'database'  => [
-                'dsn'       => 'mysql:host=localhost;dbname={{ getenv "ATTRIBUTE_FROM_SQL_DATABASE_DSN"}}',
-                'username'  => '{{ getenv "ATTRIBUTE_FROM_SQL_DATABASE_USERNAME"}}',
-                'password'  => '{{ getenv "ATTRIBUTE_FROM_SQL_DATABASE_PASSWORD"}}',
-                'table'     => '{{ getenv "ATTRIBUTE_FROM_SQL_DATABASE_TABLE"}}',
+            'existing' => 'preserve',
+            'class' => 'attributecollector:AttributeCollector',
+            'uidfield' => 'subject_nameid',
+            'collector' => [
+                'class' => 'attributecollector:SQLCollector',
+                'dsn'       => '{{ getenv "ATTRIBUTECOLLECTOR_DSN"}}',
+                'username'  => '{{ getenv "ATTRIBUTECOLLECTOR_USERNAME"}}',
+                'password'  => '{{ getenv "ATTRIBUTECOLLECTOR_PASSWORD"}}',
+                'query' => 'SELECT * from {{ getenv "ATTRIBUTECOLLECTOR_TABLE"}} where {{ getenv "ATTRIBUTECOLLECTOR_TABLE_UID_COLUMN_NAME"}}=:uidfield',
+                'get_all_query' => 'SELECT * from {{ getenv "ATTRIBUTECOLLECTOR_TABLE"}}',
             ],
         ],
     ],

@@ -8,13 +8,19 @@ RUN mkdir -p $SSP_DIR && curl -s -L -o /tmp/ssp.tar.gz https://github.com/simple
 # modules
 WORKDIR /var/simplesamlphp
 RUN composer require --ignore-platform-reqs --no-scripts niif/simplesamlphp-module-aa \
- && composer require --ignore-platform-reqs --no-scripts safire-ac-za/simplesamlphp-module-sqlattribs
+ && composer require --ignore-platform-reqs --no-scripts szabogyula/simplesamlphp-module-attributecollector:dev-master
 
 FROM php:7.4-apache
+RUN docker-php-ext-install pdo pdo_mysql
+
+## dev
+RUN apt update && apt install -y vim less
+
 COPY --from=composer --chown=www-data:www-data /var/simplesamlphp /var/simplesamlphp
 
 # Add default index page 
 ADD index.html /var/www/html/index.html
+
 # config and start
 ADD docker-config/confd-0.16.0-linux-amd64 /usr/local/bin/confd
 ADD docker-config/confd /etc/confd
