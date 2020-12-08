@@ -13,7 +13,12 @@ RUN composer require --ignore-platform-reqs --no-scripts niif/simplesamlphp-modu
 
 # STAGE app
 FROM php:7.4-apache
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get update && apt-get install -y \
+        freetds-bin \
+        freetds-dev \
+        freetds-common && \
+    ln -s /usr/lib/x86_64-linux-gnu/libsybdb.a /usr/lib/ && \
+    docker-php-ext-install pdo pdo_mysql pdo_dblib
 
 COPY --from=composer --chown=www-data:www-data /var/simplesamlphp /var/simplesamlphp
 
